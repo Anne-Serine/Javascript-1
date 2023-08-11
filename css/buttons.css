@@ -1,0 +1,57 @@
+.button {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #18768D;
+  border-radius: 3px;
+  color: #ffffff;
+  border: none;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0px 1px 2px #ababab;
+  min-width: 140px;
+  max-width: max-content;
+  height: 48px;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #58a3b5;
+  text-decoration: none;
+  transform: scale(1.02);
+}
+
+.secondary {
+  font-size: 1rem;
+  display: initial;
+  justify-content: center;
+  align-items: center;
+  background-color: #FAFAFA;
+  color: #18778D;
+  border-radius: 3px;
+  border: solid 1px #18768D;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 10px 15px;
+  text-align: center;
+  min-width: 140px;
+  max-width: max-content;
+  height: 48px;
+  transition: all 0.2s ease-in-out;
+}
+
+.secondary:hover {
+  color: #E8A15A;
+  border: solid 1px #E8A15A;
+  transform: scale(1.02);
+}
+
+.checkout-button {
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: 10rem;
+}
+
