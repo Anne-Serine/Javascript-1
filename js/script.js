@@ -3,7 +3,7 @@ const url = "https://api.noroff.dev/api/v1/rainy-days";
 const resultsContainer = document.querySelector(".product-card-container");
 
 function productCard(product) {
-  return `<a href="/products/scott-waterproof-jacket.html" class="product-card">
+  return `<a href="/products/jacket.html?productId=${product.id}" class="product-card">
   <div class="product-window">
     <img src="${product.image}" class="jacket_image" alt="${product.title}">
     <img src="/icons/heart-icon.svg" class="heart-icon" alt="heart-icon for favorites">
@@ -32,8 +32,6 @@ async function getProducts() {
 
   for (let i = 0; i < productData.length; i++) {
     //console.log(productData[i].title);
-
-    
 
     resultsContainer.innerHTML += productCard(productData[i]);
   }
