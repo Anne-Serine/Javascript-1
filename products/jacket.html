@@ -45,30 +45,25 @@
   </header>
 
   <main>
-    <section>
+    <section id="productDetails">
       <div class="content-box">
         <div class="product-detail-card">
           <div class="product-image-gallery">
             <div class="product-image">
-              <img src="/images/resized/scott-wp-jacket.png" class="jacket-product_image" alt="A black waterproof jacket with white details from Scott">
+              <img src="" class="jacket-product_image" alt="" id="productImage">
             </div>
             <div class="detail-thumbnails">
-              <img src="/images/resized/swpj-1.jpg" class="jacket-detail_image" alt="Scott waterproof jacket detail picture">
-              <img src="/images/resized/swpj-2.jpg" class="jacket-detail_image" alt="Scott waterproof jacket detail picture">
-              <img src="/images/resized/swpj-3.jpg" class="jacket-detail_image" alt="Scott waterproof jacket detail picture">
+              <img src="" class="jacket-detail_image" alt="" id="productThumbnail">
             </div>
           </div>
-
+      
           <div class="product-image-gallery">
             <div>
-              <h1>Scott waterproof jacket</h1>
-              <p>Perfect for hiking on a rainy day</p>
+              <h1 id="productName"></h1>
+              <p id="productDescription"></p>
             </div>
             <div>
-              <ul>
-                <li>100 % waterproof</li>
-                <li>Great comfort</li>
-                <li>Durable material</li>
+              <ul id="tags">
               </ul>
             </div>
             <div>
@@ -81,12 +76,7 @@
             </div>
             <div>
               <p>Select size</p>
-              <div class="product-card-size">
-                <p>S</p>
-                <p>M</p>
-                <p>L</p>
-                <p>XL</p>
-                <p>XXL</p>
+              <div class="product-card-size" id="productSizes">
               </div>
             </div>
             <div class="flex-container">
@@ -94,9 +84,9 @@
                 <img src="/icons/checkmark-light.png" alt="checkmark icon">
                 <p>In stock</p>
               </div>
-              <p class="detail-price">899 NOK</p>
+              <p class="detail-price" id="productPrice"></p>
             </div>
-            <a href="/checkout.html" class="button">Shop now</button></a>
+            <a href="/checkout.html" class="button" id="shopNowButton">Shop now</button></a>
             <div class="product-card-estimated">
               <img src="/icons/package.png" alt="package icon">
               <p>Estimated delivery 3-5 days</p>
@@ -104,6 +94,7 @@
           </div>
         </div>
       </div>
+     
     </section>
 
     <section>
