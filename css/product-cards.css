@@ -82,7 +82,7 @@
 .product-image {
   display: flex;
   justify-content: center;
-  background-color: #F4F4F4;
+  border: 1px solid #ddd;
   padding: 20px;
 }
 
@@ -257,6 +257,8 @@ aside ul {
 .jacket-detail_image {
   max-width: 80px;
   width: 100%;
+  border: 1px solid #ddd;
+  padding: 10px;
 }
 
 .detail-thumbnails {
