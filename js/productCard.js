@@ -1,6 +1,6 @@
 export function productCard(product) {
 
-  return `<a href="/products/jacket.html?productId=${product.id}&title=${product.title}" class="product-card">
+  return `<a href="/products/jacket.html?productId=${product.id}" class="product-card">
   <div class="product-window">
     <img src="${product.image}" class="jacket_image" alt="${product.description}">
     <img src="/icons/heart-icon.svg" class="heart-icon" alt="heart-icon for favorites">
