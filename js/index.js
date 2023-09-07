@@ -1,17 +1,14 @@
 import { productCard } from "./productCard.js";
-import { getProducts } from "./api/getProducts.js";
-import { getOneProduct } from "./api/getOneProduct.js";
-//import { createHtmlForDetailCard } from "./detailCard.js";
+import { fetchProducts } from "./api/apiCall.js";
 
 
 
 
 async function createProductCards() {
+  const url = "https://api.noroff.dev/api/v1/rainy-days/"
   const resultsContainer = document.querySelector(".product-card-container");
 
-  const products = await getProducts();
-
-  resultsContainer.innerHTML = "";
+  const products = await fetchProducts(url, resultsContainer);
 
   for (let i = 0; i < products.length; i++) {
     resultsContainer.innerHTML += productCard(products[i]);
@@ -27,6 +24,14 @@ createProductCards();
 
 // async function createDetailCard() {
 
+//   const resultsContainer = document.querySelector(".product-detail-card");
+
+//   const queryString = document.location.search;
+//   const params = new URLSearchParams(queryString);
+//   const id = params.get("productId");
+
+//   const url2 = "https://api.noroff.dev/api/v1/rainy-days/" + id;
+
 //   const productImage = document.querySelector("#productImage");
 //   const productName = document.querySelector("#productName");
 //   const productDescription = document.querySelector("#productDescription");
@@ -35,7 +40,9 @@ createProductCards();
 //   const productPrice = document.querySelector("#productPrice");
 //   const productThumbnail = document.querySelector("#productThumbnail");
 
-//   const productDetails = await getOneProduct();
+//   const productDetails = await fetchProducts(url2, resultsContainer);
+
+//  document.title = productDetails.title + " | Rainy Days";
   
 //   // detailContainer.innerHTML = "";
 
@@ -65,7 +72,6 @@ createProductCards();
 
 // }
 
-
 // createDetailCard();
 
 
@@ -74,7 +80,19 @@ createProductCards();
 
 async function createHtmlForDetailCard() {
 
-  const productData = await getOneProduct();
+  const resultsContainer = document.querySelector(".product-detail-card");
+
+  const params = new URLSearchParams(document.location.search);
+  const id = params.get("productId");
+  
+
+  const url2 = `https://api.noroff.dev/api/v1/rainy-days/${id}`;
+
+
+  const productData = await fetchProducts(url2, resultsContainer);
+  
+  document.title = productData.title + " | Rainy Days";
+
 
   const productDetails = document.querySelector("#productDetails");
 
@@ -206,7 +224,7 @@ async function createHtmlForDetailCard() {
   productCardEstimated.appendChild(packageIcon);
   productCardEstimated.appendChild(estimatedDelivery);
 
-
+  
 }
 
 createHtmlForDetailCard()
