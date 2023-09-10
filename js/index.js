@@ -1,19 +1,22 @@
 import { productCard } from "./productCard.js";
 import { fetchProducts } from "./api/apiCall.js";
+import { loadingIndicator } from "./functions.js";
 
 
 
 
 async function createProductCards() {
-  const url = "https://api.noroff.dev/api/v1/rainy-days/"
+  const url = "https://api.noroff.dev/api/v1/rainy-days"
   const resultsContainer = document.querySelector(".product-card-container");
 
   const products = await fetchProducts(url, resultsContainer);
 
-  resultsContainer.innerHTML = "";
+  if (products) {
+    resultsContainer.innerHTML = "";
 
-  for (let i = 0; i < products.length; i++) {
-    resultsContainer.innerHTML += productCard(products[i]);
+    for (let i = 0; i < products.length; i++) {
+      resultsContainer.innerHTML += productCard(products[i]);
+    }
   }
   
 }
@@ -28,50 +31,52 @@ async function createDetailCard() {
 
   const resultsContainer = document.querySelector(".product-detail-card");
 
-  const queryString = document.location.search;
-  const params = new URLSearchParams(queryString);
+  const params = new URLSearchParams(document.location.search);
   const id = params.get("productId");
 
-  const url2 = "https://api.noroff.dev/api/v1/rainy-days/" + id;
+  if (id) {
 
-  const productImage = document.querySelector("#productImage");
-  const productName = document.querySelector("#productName");
-  const productDescription = document.querySelector("#productDescription");
-  const tags = document.querySelector("#tags");
-  const productSizes = document.querySelector("#productSizes");
-  const productPrice = document.querySelector("#productPrice");
-  const productThumbnail = document.querySelector("#productThumbnail");
-  const spinner = document.querySelector("#spinner");
+    const url2 = "https://api.noroff.dev/api/v1/rainy-days/" + id;
 
-  const productDetails = await fetchProducts(url2, resultsContainer);
-
-  document.title = productDetails.title + " | Rainy Days";
-  
-  
-
-  if(productImage || productName || productDescription || tags || productSizes || productPrice || productThumbnail) {
     
-    spinner.classList.add("dn")
+    const productDetails = await fetchProducts(url2, resultsContainer);
+  
 
-    productImage.setAttribute("src", productDetails.image);
-    productImage.setAttribute("alt", productDetails.description);
-    productName.innerHTML = productDetails.title;
-    productDescription.innerHTML = productDetails.description;
+    if(productDetails) {
+      
+      const productImage = document.querySelector("#productImage");
+      const productName = document.querySelector("#productName");
+      const productDescription = document.querySelector("#productDescription");
+      const tags = document.querySelector("#tags");
+      const productSizes = document.querySelector("#productSizes");
+      const productPrice = document.querySelector("#productPrice");
+      const productThumbnail = document.querySelector("#productThumbnail");
+      const loader = document.querySelector(".loading-container");
 
-    for (let i = 0; i < productDetails.tags.length; i++) {
+      document.title = productDetails.title + " | Rainy Days";
 
-      tags.innerHTML += "<li>" + productDetails.tags[i] + "</li>";
+      loader.classList.add("dn")
+
+      productImage.setAttribute("src", productDetails.image);
+      productImage.setAttribute("alt", productDetails.description);
+      productName.innerHTML = productDetails.title;
+      productDescription.innerHTML = productDetails.description;
+
+      for (let i = 0; i < productDetails.tags.length; i++) {
+
+        tags.innerHTML += "<li>" + productDetails.tags[i] + "</li>";
+      }
+
+      for (let i = 0; i < productDetails.sizes.length; i++) {
+
+        productSizes.innerHTML += "<p>" + productDetails.sizes[i] + "</p>";
+      }
+
+      productPrice.innerHTML = productDetails.price + " NOK";
+
+      productThumbnail.setAttribute("src", productDetails.image);
+      productThumbnail.setAttribute("alt", productDetails.description);
     }
-
-    for (let i = 0; i < productDetails.sizes.length; i++) {
-
-      productSizes.innerHTML += "<p>" + productDetails.sizes[i] + "</p>";
-    }
-
-    productPrice.innerHTML = productDetails.price + " NOK";
-
-    productThumbnail.setAttribute("src", productDetails.image);
-    productThumbnail.setAttribute("alt", productDetails.description);
   }
 
 }
@@ -94,9 +99,12 @@ createDetailCard();
 
 
 //   const productData = await fetchProducts(url2, resultsContainer);
+//   if (productData) {
   
 //   document.title = productData.title + " | Rainy Days";
 
+//   const loader = document.querySelector(".loading-container");
+//   loader.classList.add("dn");
 
 //   const productDetails = document.querySelector("#productDetails");
 
@@ -231,7 +239,7 @@ createDetailCard();
 //   productCardEstimated.appendChild(packageIcon);
 //   productCardEstimated.appendChild(estimatedDelivery);
 
-  
+//   }
 // }
 
 // createHtmlForDetailCard()

@@ -312,3 +312,24 @@ aside ul {
 
 }
 
+.loading-indicator {
+  border: 1rem solid #ababab;
+  border-top: 1rem solid #18778D;
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error {
+  border: solid 1px #A41C1C;
+  padding: 1rem;
+  background-color: #efbcbc;
+  color: #A41C1C;
+  border-radius: 3px;
+}

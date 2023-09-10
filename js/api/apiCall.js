@@ -7,9 +7,7 @@ export async function fetchProducts(url, resultsContainer) {
     return productData;
   }
   catch(error) {
-    resultsContainer.innerHTML = `<div role="alert"> Sorry, something went wrong... </div>`;
+    resultsContainer.innerHTML = `<div role="alert" class="error"> Sorry, something went wrong... </div>`;
 
   }
 }
-
-//style error message
