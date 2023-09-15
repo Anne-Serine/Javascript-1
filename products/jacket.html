@@ -11,6 +11,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Montserrat:ital,wght@0,400;0,700;0,800;1,700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/777383031e.js" crossorigin="anonymous"></script>
+  <!-- Hotjar Tracking Code for https://teal-taiyaki-8b6fe7.netlify.app/ -->
+  <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3655485,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
 </head>
 
 <body>
@@ -39,7 +50,7 @@
       <div class="header-icons">
         <img src="/icons/login-icon.svg" class="green-icon" alt="login icon">
         <img src="/icons/heart-icon.svg" class="heart-icon" alt="Heart icon for favorites">
-        <a href="/checkout.html"><img src="/icons/cart-icon.svg" class="green-icon" alt="cart icon"></a>
+        <a href="/checkout.html"><img src="/icons/cart-icon.svg" class="green-icon" alt="cart icon"><span id="cartItemsCount"></span></a>
       </div>
     </div>
   </header>
@@ -89,7 +100,7 @@
               </div>
               <p class="detail-price" id="productPrice"></p>
             </div>
-            <a href="/checkout.html" class="button" id="shopNowButton">Shop now</button></a>
+            <button class="button" id="shopNowButton">Add to cart</button>
             <div class="product-card-estimated">
               <img src="/icons/package.png" alt="package icon">
               <p>Estimated delivery 3-5 days</p>
