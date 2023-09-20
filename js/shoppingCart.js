@@ -2,8 +2,8 @@ import { fetchProducts } from "./api/apiCall.js";
 
 // const cartItems =  initShoppingCart();
 
-// const cartContainer = document.querySelector("#cartContainer");
-// const productsUrl = "https://api.noroff.dev/api/v1/rainy-days";
+const cartContainer = document.querySelector("#cartContainer");
+const productsUrl = "https://api.noroff.dev/api/v1/rainy-days";
 
 
 function save(key, value) {
@@ -11,33 +11,77 @@ function save(key, value) {
   localStorage.setItem(key, encodedValue);
 }
 
+
 function load(key) {
   const encodedValue = localStorage.getItem(key);
   return JSON.parse(encodedValue);
 }
 
+
 function remove(key) {
   localStorage.removeItem(key);
 }
 
-function onAddToCart() {}
-function renderCart() {}
-function demo() {}
+
+function onAddToCart(event) {
+  const productId = event.target.value;
+  console.log(productId);
+
+  let cart = load("cart") || [];
+
+  const itemInCart = cart.find(item =>item.productId === productId)
+
+  if (itemInCart) {
+    itemInCart.quantity++;
+    console.log(itemInCart)
+  } else {
+    cart.push({
+      productId,
+      quantity: 1
+    })
+  }
+  //console.log(calculateTotal());
+
+  save("cart", cart);
+}
 
 
-
-
-// if (cartContainer) {
-//   const productData = await fetchProducts(cartContainer, productsUrl);
-
-//   for (let i = 0; i > productData.length; i++) {
-//     if(cartItems.some(item => item.product.productId === productData[i].id)) {
-//       cartContainer.innerHTML += `<li>
-//                                   ${productData[i].title}<span>${productData[i].title}</span>
-//                                 </li>`
-//     }
-//   }
+// function calculateTotal() {
+//   const cart = load("cart");
+//   return cart.reduce((total, currentItem) => {
+//     return total + currentItem.quantity
+//   }, 0)
 // }
+
+
+function renderCart() {}
+
+
+export function addToCartButton() {
+  const button = document.querySelector("#shopNowButton");
+  if (button) {
+    button.addEventListener("click", onAddToCart)
+  }
+
+
+}
+
+
+const loadedCart = load("cart")
+
+if (cartContainer) {
+  const productData = await fetchProducts(productsUrl, cartContainer);
+
+  console.log(productData)
+
+  for (let i = 0; i < productData.length; i++) {
+    if(loadedCart.some(item => item.productId === productData[i].id)) {
+      cartContainer.innerHTML += `<li>
+                                  ${productData[i].title}<span>${productData[i].price}</span>
+                                </li>`                        
+    }
+  }
+}
 
 
 
@@ -85,11 +129,11 @@ function demo() {}
 
 
 
-// Empty the whole cart and clear local storage
-const emptyCartBtn = document.querySelector('#emptyCart');
-emptyCartBtn.addEventListener('click', () => {
-  const cartCounter = document.querySelector('#cartItemsCount')
-  cartCounter.innerText = 0
-  cartContainer.innerHTML = ''
-  localStorage.removeItem('rainy-days-cart')
-})
+// // Empty the whole cart and clear local storage
+// const emptyCartBtn = document.querySelector('#emptyCart');
+// emptyCartBtn.addEventListener('click', () => {
+//   const cartCounter = document.querySelector('#cartItemsCount')
+//   cartCounter.innerText = 0
+//   cartContainer.innerHTML = ''
+//   localStorage.removeItem('rainy-days-cart')
+// })

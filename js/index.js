@@ -1,9 +1,10 @@
 import { productCard } from "./productCard.js";
 import { fetchProducts } from "./api/apiCall.js";
 import { loadingIndicator } from "./functions.js";
+import { addToCartButton } from "./shoppingCart.js";
 
 
-
+addToCartButton()
 
 
 async function createProductCards() {
