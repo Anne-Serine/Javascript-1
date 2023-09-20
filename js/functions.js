@@ -10,7 +10,3 @@ export function loadingIndicator() {
 loadingIndicator();
 
 
-
-
-//shopping cart
-

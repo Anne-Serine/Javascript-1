@@ -5,6 +5,7 @@ import { loadingIndicator } from "./functions.js";
 
 
 
+
 async function createProductCards() {
   const url = "https://api.noroff.dev/api/v1/rainy-days"
   const resultsContainer = document.querySelector(".product-card-container");
@@ -52,6 +53,7 @@ async function createDetailCard() {
       const productPrice = document.querySelector("#productPrice");
       const productThumbnail = document.querySelector("#productThumbnail");
       const loader = document.querySelector(".loading-container");
+      const button = document.querySelector("#shopNowButton")
 
       document.title = productDetails.title + " | Rainy Days";
 
@@ -61,6 +63,7 @@ async function createDetailCard() {
       productImage.setAttribute("alt", productDetails.description);
       productName.innerHTML = productDetails.title;
       productDescription.innerHTML = productDetails.description;
+      button.setAttribute("value", productDetails.id);
 
       for (let i = 0; i < productDetails.tags.length; i++) {
 
@@ -83,8 +86,7 @@ async function createDetailCard() {
 
 createDetailCard();
 
-
-
+//initShoppingCart();
 
 
 // async function createHtmlForDetailCard() {
