@@ -78,7 +78,7 @@ async function createDetailCard() {
         productSizes.innerHTML += "<p>" + productDetails.sizes[i] + "</p>";
       }
 
-      productPrice.innerHTML = productDetails.price + " NOK";
+      productPrice.innerHTML = productDetails.price + " $";
 
       productThumbnail.setAttribute("src", productDetails.image);
       productThumbnail.setAttribute("alt", productDetails.description);

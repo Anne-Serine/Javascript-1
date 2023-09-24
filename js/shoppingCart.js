@@ -86,7 +86,7 @@ if (cartContainer) {
   
 
   for (let i = 0; i < productData.length; i++) {
-    if(loadedCart.some(item => item.productId === productData[i].id)) {
+    if(loadedCart && loadedCart.some(item => item.productId === productData[i].id)) {
 
       let quantity = 0;
       for (let q = 0; q < loadedCart.length; q++) {
