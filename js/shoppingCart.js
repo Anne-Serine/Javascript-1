@@ -23,6 +23,28 @@ function remove(key) {
 }
 
 
+function calculateTotal() {
+  const cart = load("cart");
+  if(cart) {
+    return cart.reduce((total, currentItem) => {
+      return total + currentItem.quantity
+    }, 0)
+  } 
+  return 0;
+}
+
+
+function setCartItemCounter() {
+  const cartItemCounter = document.querySelector("#cartItemCounter")
+  if(cartItemCounter) {
+    cartItemCounter.innerHTML = calculateTotal();
+  }
+}
+
+setCartItemCounter();
+
+
+
 function onAddToCart(event) {
   const productId = event.target.value;
 
@@ -38,25 +60,12 @@ function onAddToCart(event) {
       quantity: 1
     })
   }
- 
-
   save("cart", cart);
+
+  setCartItemCounter();
 }
 
 
-const cartItemCounter = document.querySelector("#cartItemCounter")
-if(cartItemCounter) {
-  cartItemCounter.innerHTML = calculateTotal();
-}
-
-
-
-function calculateTotal() {
-  const cart = load("cart");
-  return cart.reduce((total, currentItem) => {
-    return total + currentItem.quantity
-  }, 0)
-}
 
 
 function renderCart() {}
@@ -92,7 +101,7 @@ if (cartContainer) {
                                 <p>${productData[i].baseColor}</p>
                                 <p><span>${productData[i].price} $</span></p>
                                 <p>${quantity}</p>
-                                <p>${productData[i].price * quantity}</p></div>
+                                <p>${(productData[i].price * quantity).toLocaleString()}</p></div>
                                 </li>`                                
     }
   }
