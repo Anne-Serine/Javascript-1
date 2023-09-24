@@ -76,7 +76,7 @@
           />
           <a href="/checkout.html"
             ><img src="/icons/cart-icon.svg" class="green-icon" alt="cart icon"
-          /></a>
+          /><span id="cartItemCounter">0</span></a>
         </div>
       </div>
     </header>
@@ -85,8 +85,8 @@
       <section>
         <div class="content-box">
           <h1>Your shopping cart</h1>
-          <ul class="product-card-container" id="cartContainer"></ul>
-          <button class="empty-cart">Empty cart</button>
+          <ul class="product-card-container cart-container" id="cartContainer"></ul>
+          <button class="empty-cart-button button" id="emptyCartButton">Empty cart</button>
           <a href="./checkout.html">Checkout</a>
         </div>
       </section>

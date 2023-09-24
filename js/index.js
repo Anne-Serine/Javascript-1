@@ -4,7 +4,9 @@ import { loadingIndicator } from "./functions.js";
 import { addToCartButton } from "./shoppingCart.js";
 
 
+
 addToCartButton()
+
 
 
 async function createProductCards() {
@@ -13,7 +15,7 @@ async function createProductCards() {
 
   const products = await fetchProducts(url, resultsContainer);
 
-  if (products) {
+  if (products && resultsContainer) {
     resultsContainer.innerHTML = "";
 
     for (let i = 0; i < products.length; i++) {

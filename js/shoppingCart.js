@@ -25,7 +25,6 @@ function remove(key) {
 
 function onAddToCart(event) {
   const productId = event.target.value;
-  console.log(productId);
 
   let cart = load("cart") || [];
 
@@ -33,25 +32,31 @@ function onAddToCart(event) {
 
   if (itemInCart) {
     itemInCart.quantity++;
-    console.log(itemInCart)
   } else {
     cart.push({
       productId,
       quantity: 1
     })
   }
-  //console.log(calculateTotal());
+ 
 
   save("cart", cart);
 }
 
 
-// function calculateTotal() {
-//   const cart = load("cart");
-//   return cart.reduce((total, currentItem) => {
-//     return total + currentItem.quantity
-//   }, 0)
-// }
+const cartItemCounter = document.querySelector("#cartItemCounter")
+if(cartItemCounter) {
+  cartItemCounter.innerHTML = calculateTotal();
+}
+
+
+
+function calculateTotal() {
+  const cart = load("cart");
+  return cart.reduce((total, currentItem) => {
+    return total + currentItem.quantity
+  }, 0)
+}
 
 
 function renderCart() {}
@@ -60,10 +65,8 @@ function renderCart() {}
 export function addToCartButton() {
   const button = document.querySelector("#shopNowButton");
   if (button) {
-    button.addEventListener("click", onAddToCart)
+    button.addEventListener("click", onAddToCart);
   }
-
-
 }
 
 
@@ -71,17 +74,45 @@ const loadedCart = load("cart")
 
 if (cartContainer) {
   const productData = await fetchProducts(productsUrl, cartContainer);
-
-  console.log(productData)
+  
 
   for (let i = 0; i < productData.length; i++) {
     if(loadedCart.some(item => item.productId === productData[i].id)) {
+
+      let quantity = 0;
+      for (let q = 0; q < loadedCart.length; q++) {
+        if(productData[i].id === loadedCart[q].productId) {
+          quantity = loadedCart[q].quantity;
+        }
+      }
       cartContainer.innerHTML += `<li>
-                                  ${productData[i].title}<span>${productData[i].price}</span>
-                                </li>`                        
+                                <div class="cart-small-image"><img src="${productData[i].image}"></div>
+                                <div>
+                                <p>${productData[i].title}</p>
+                                <p>${productData[i].baseColor}</p>
+                                <p><span>${productData[i].price} $</span></p>
+                                <p>${quantity}</p>
+                                <p>${productData[i].price * quantity}</p></div>
+                                </li>`                                
     }
   }
 }
+
+
+
+function emptyCart() {
+  const emptyCartButton = document.querySelector("#emptyCartButton");
+  if(emptyCartButton) {
+    emptyCartButton.addEventListener("click", function() {
+      remove("cart");
+      cartItemCounter.innerText = 0
+  
+      cartContainer.innerHTML = "Shopping cart is empty";
+    })
+  }
+}
+
+emptyCart()
 
 
 
@@ -109,22 +140,24 @@ if (cartContainer) {
 
 
 
-// export function initShoppingCart() {
-//   let cartItems = [];
+export function initShoppingCart() {
+  let cartItems = [];
 
-//   const storedCart = JSON.parse(localStorage.getItem("rainy-days-cart"));
+  const storedCart = JSON.parse(localStorage.getItem("rainy-days-cart"));
   
-//   if(storedCart) {
-//     cartItems = storedCart;
-//   }
+  if(storedCart) {
+    cartItems = storedCart;
+  }
 
-//   const cartCounter = document.querySelector("#cartItemsCount");
-//   cartCounter.innerText = cartItems.length;
+  const cartCounter = document.querySelector("#cartItemsCount");
+  cartCounter.innerText = cartItems.length;
 
-//   addToCart(cartItems, cartCounter);
+  addToCart(cartItems, cartCounter);
 
-//   return cartItems;
-// }
+  return cartItems;
+}
+
+
 
 
 
