@@ -101,6 +101,17 @@
               <p class="detail-price" id="productPrice"></p>
             </div>
             <button class="button" id="shopNowButton" data-product-id="">Add to cart</button>
+            <dialog class="dialog-added-item" id="dialog">
+              <div>
+                <div aria-label="close window" class="close-button-container"><button class="close-window-button">&times;</button></div>
+                <h2>Successfully added to cart</h2>
+                <p>Do you like to continue shopping or go to the shopping cart?</p>
+                <div class="dialog-buttons">
+                  <div><a href="/index.html"><button class="secondary continue-shopping-button" id="continueShopping">Shop more</button></a></div>
+                  <div><a href="/shoppingCart.html"><button class="button go-to-cart-button" id="goToCart">Go to cart</button></a></div>
+                </div>
+              </div>
+            </dialog>
             <!-- <a href="/checkout.html" class="button">Add to cart</a> -->
             <div class="product-card-estimated">
               <img src="/icons/package.png" alt="package icon">

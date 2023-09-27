@@ -63,6 +63,14 @@ function onAddToCart(event) {
   save("cart", cart);
 
   setCartItemCounter();
+
+  const dialog = document.querySelector("dialog");
+  dialog.showModal();
+
+  const dialogCloseButton = document.querySelector(".close-window-button");
+  dialogCloseButton.addEventListener("click", () => {
+    dialog.close();
+  })
 }
 
 
@@ -81,9 +89,9 @@ export function addToCartButton() {
 
 const loadedCart = load("cart")
 
+
 if (cartContainer) {
   const productData = await fetchProducts(productsUrl, cartContainer);
-  
 
   for (let i = 0; i < productData.length; i++) {
     if(loadedCart && loadedCart.some(item => item.productId === productData[i].id)) {
@@ -127,6 +135,15 @@ emptyCart()
 
 
 
+
+
+
+
+
+
+
+
+
 // export function addToCart (cartItems, cartCounter) {
 //   const addToCartBtn = document.querySelector("#shopNowButton");
 
@@ -149,22 +166,22 @@ emptyCart()
 
 
 
-export function initShoppingCart() {
-  let cartItems = [];
+// export function initShoppingCart() {
+//   let cartItems = [];
 
-  const storedCart = JSON.parse(localStorage.getItem("rainy-days-cart"));
+//   const storedCart = JSON.parse(localStorage.getItem("rainy-days-cart"));
   
-  if(storedCart) {
-    cartItems = storedCart;
-  }
+//   if(storedCart) {
+//     cartItems = storedCart;
+//   }
 
-  const cartCounter = document.querySelector("#cartItemsCount");
-  cartCounter.innerText = cartItems.length;
+//   const cartCounter = document.querySelector("#cartItemsCount");
+//   cartCounter.innerText = cartItems.length;
 
-  addToCart(cartItems, cartCounter);
+//   addToCart(cartItems, cartCounter);
 
-  return cartItems;
-}
+//   return cartItems;
+// }
 
 
 
