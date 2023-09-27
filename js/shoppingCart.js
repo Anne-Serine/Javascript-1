@@ -102,14 +102,19 @@ if (cartContainer) {
           quantity = loadedCart[q].quantity;
         }
       }
-      cartContainer.innerHTML += `<li>
-                                <div class="cart-small-image"><img src="${productData[i].image}"></div>
-                                <div>
-                                <p>${productData[i].title}</p>
-                                <p>${productData[i].baseColor}</p>
-                                <p><span>${productData[i].price} $</span></p>
-                                <p>${quantity}</p>
-                                <p>${(productData[i].price * quantity).toLocaleString()}</p></div>
+      cartContainer.innerHTML += `<li class="cart-display-box">
+                                <div class="cart-items-display">
+                                  <div class="cart-small-image"><img src="${productData[i].image}"></div>
+                                  <div>
+                                  <p>${productData[i].title}</p>
+                                  <p>${productData[i].baseColor}</p>
+                                  </div>
+                                </div>
+                                <div class="cart-price-display">
+                                  <p>${productData[i].price} $</p>
+                                  <p>${quantity}</p>
+                                  <p><span>${(productData[i].price * quantity).toLocaleString()} $</span></p>
+                                </div>
                                 </li>`                                
     }
   }

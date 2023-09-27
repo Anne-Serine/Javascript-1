@@ -25,6 +25,9 @@ section {
   max-width: 1000px;
 }
 
+.dn {
+  display: none;
+}
 
 @media screen and (min-width: 650px) {
   
@@ -35,6 +38,3 @@ section {
 
 }
 
-.dn {
-  display: none;
-}
