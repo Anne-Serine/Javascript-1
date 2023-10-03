@@ -109,12 +109,14 @@ if (cartContainer) {
 
       cartContainer.innerHTML += `<li class="cart-display-box">
                                 <div class="cart-items-display">
-                                <a href="/products/jacket.html?productId=${productData[i].id}">
-                                  <div class="cart-small-image"><img src="${productData[i].image}"></div>
+                                  <a href="/products/jacket.html?productId=${productData[i].id}" class="cart-small-image">
+                                    <img src="${productData[i].image}">
+                                  </a>
                                   <div>
-                                  <p>${productData[i].title}</p>
-                                </a>
-                                  <p>${productData[i].baseColor}</p>
+                                    <a href="/products/jacket.html?productId=${productData[i].id}">
+                                      ${productData[i].title}
+                                    </a>
+                                    <p>${productData[i].baseColor}</p>
                                   </div>
                                 </div>
                                 <div class="cart-price-display">
