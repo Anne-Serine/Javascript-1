@@ -1,6 +1,5 @@
 import { fetchProducts } from "./api/apiCall.js";
 
-// const cartItems =  initShoppingCart();
 
 const cartContainer = document.querySelector("#cartContainer");
 const productsUrl = "https://api.noroff.dev/api/v1/rainy-days";
@@ -76,9 +75,6 @@ function onAddToCart(event) {
 
 
 
-function renderCart() {}
-
-
 export function addToCartButton() {
   const button = document.querySelector("#shopNowButton");
   if (button) {
@@ -88,20 +84,26 @@ export function addToCartButton() {
 
 
 const loadedCart = load("cart")
-
+let total = 0;
 
 if (cartContainer) {
+  cartContainer.innerHTML = "Shopping cart is empty";
   const productData = await fetchProducts(productsUrl, cartContainer);
 
   for (let i = 0; i < productData.length; i++) {
     if(loadedCart && loadedCart.some(item => item.productId === productData[i].id)) {
 
       let quantity = 0;
+      
       for (let q = 0; q < loadedCart.length; q++) {
         if(productData[i].id === loadedCart[q].productId) {
           quantity = loadedCart[q].quantity;
+          total = total + (productData[i].price * quantity)
         }
       }
+
+      cartContainer.innerHTML = "";
+
       cartContainer.innerHTML += `<li class="cart-display-box">
                                 <div class="cart-items-display">
                                   <div class="cart-small-image"><img src="${productData[i].image}"></div>
@@ -113,23 +115,38 @@ if (cartContainer) {
                                 <div class="cart-price-display">
                                   <p>${productData[i].price} $</p>
                                   <p>${quantity}</p>
-                                  <p><span>${(productData[i].price * quantity).toLocaleString()} $</span></p>
+                                  <p class="each-product-total"><span>${(productData[i].price * quantity).toLocaleString()} $</span></p>
                                 </div>
-                                </li>`                                
+                                </li>`                            
     }
+    
   }
+
+
+  const totalContainer = document.querySelector(".cart-total-container");
+  
+  totalContainer.innerHTML += `<p>
+                                Total: <span>${total} $
+                              </span></p>`
+
 }
+
+
 
 
 
 function emptyCart() {
   const emptyCartButton = document.querySelector("#emptyCartButton");
+  const totalContainer = document.querySelector(".cart-total-container");
   if(emptyCartButton) {
     emptyCartButton.addEventListener("click", function() {
       remove("cart");
       cartItemCounter.innerText = 0
   
       cartContainer.innerHTML = "Shopping cart is empty";
+      totalContainer.innerHTML = `<p>
+                                  Total: <span>0 $
+                                  </span></p>`;
     })
   }
 }
@@ -138,66 +155,3 @@ emptyCart()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-// export function addToCart (cartItems, cartCounter) {
-//   const addToCartBtn = document.querySelector("#shopNowButton");
-
-//   addToCartBtn.addEventListener("click", (event) => {
-//     const productId = event.target.value;
-
-//     if (!cartItems.some(item => item.product.productId === productId)) {
-//       cartItems.push({
-//         product: {
-//           productId: productId,
-//           qty: 1
-//         }
-//       })
-//     }
-//     localStorage.setItem("rainy-days-cart", JSON.stringify(cartItems)),
-//     cartCounter.innerHTML = cartItems.length;
-//   })
-// }
-
-
-
-
-// export function initShoppingCart() {
-//   let cartItems = [];
-
-//   const storedCart = JSON.parse(localStorage.getItem("rainy-days-cart"));
-  
-//   if(storedCart) {
-//     cartItems = storedCart;
-//   }
-
-//   const cartCounter = document.querySelector("#cartItemsCount");
-//   cartCounter.innerText = cartItems.length;
-
-//   addToCart(cartItems, cartCounter);
-
-//   return cartItems;
-// }
-
-
-
-
-
-
-// // Empty the whole cart and clear local storage
-// const emptyCartBtn = document.querySelector('#emptyCart');
-// emptyCartBtn.addEventListener('click', () => {
-//   const cartCounter = document.querySelector('#cartItemsCount')
-//   cartCounter.innerText = 0
-//   cartContainer.innerHTML = ''
-//   localStorage.removeItem('rainy-days-cart')
-// })
