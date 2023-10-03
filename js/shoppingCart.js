@@ -87,28 +87,33 @@ const loadedCart = load("cart")
 let total = 0;
 
 if (cartContainer) {
+
   cartContainer.innerHTML = "Shopping cart is empty";
+
+  if(loadedCart) {
+    cartContainer.innerHTML = "";
+  }
   const productData = await fetchProducts(productsUrl, cartContainer);
 
   for (let i = 0; i < productData.length; i++) {
     if(loadedCart && loadedCart.some(item => item.productId === productData[i].id)) {
-
+      
       let quantity = 0;
       
       for (let q = 0; q < loadedCart.length; q++) {
         if(productData[i].id === loadedCart[q].productId) {
           quantity = loadedCart[q].quantity;
-          total = total + (productData[i].price * quantity)
+          total = total + (quantity * productData[i].price);
         }
       }
 
-      cartContainer.innerHTML = "";
-
       cartContainer.innerHTML += `<li class="cart-display-box">
                                 <div class="cart-items-display">
+                                <a href="/products/jacket.html?productId=${productData[i].id}">
                                   <div class="cart-small-image"><img src="${productData[i].image}"></div>
                                   <div>
                                   <p>${productData[i].title}</p>
+                                </a>
                                   <p>${productData[i].baseColor}</p>
                                   </div>
                                 </div>
@@ -121,12 +126,13 @@ if (cartContainer) {
     }
     
   }
+  
 
 
   const totalContainer = document.querySelector(".cart-total-container");
   
   totalContainer.innerHTML += `<p>
-                                Total: <span>${total} $
+                                Total: <span>${total.toLocaleString()} $
                               </span></p>`
 
 }
@@ -138,6 +144,7 @@ if (cartContainer) {
 function emptyCart() {
   const emptyCartButton = document.querySelector("#emptyCartButton");
   const totalContainer = document.querySelector(".cart-total-container");
+
   if(emptyCartButton) {
     emptyCartButton.addEventListener("click", function() {
       remove("cart");
