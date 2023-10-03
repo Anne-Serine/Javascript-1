@@ -86,7 +86,7 @@
                 <label for="normal-delivery">Normal delivery</label>
               </div>
               <div class="align-right">
-                <p class="price">99 NOK</p>
+                <p class="price">5 $</p>
               </div>
             </div>
             <div class="summary-layout"> 
@@ -95,7 +95,7 @@
                 <label for="express-delivery">Express delivery</label>
               </div>
               <div class="align-right">
-                <p class="price">149 NOK</p>
+                <p class="price">10 $</p>
               </div>
             </div>
           </fieldset>
@@ -138,9 +138,18 @@
       </form>
 
       <div class="sticky">
-        <div class="checkout-summary">
-          <div class="summary-layout">
-            <div>
+        <ul class="checkout-summary" id="cartContainer"></ul>
+        <div class="checkout-summary cart-total-container" id="checkoutSummaryTotal"></div>
+        <a href="/checkout-success.html" class="button checkout-button">Complete order</a>
+      </div>
+
+      <!-- <div class="sticky">
+        <div class="checkout-summary" id="summaryCheckoutContainer"> -->
+          <!-- <div class="sticky">
+            <ul class="checkout-summary" id="cartContainer">
+
+            </ul> -->
+            <!-- <div >
               <img src="/images/resized/scott-wp-jacket.png" class="jacket_image" alt="A black waterproof jacket with white details from Scott">
             </div>
             <div>
@@ -162,18 +171,19 @@
                   <li>Total price: <div class="price">998 NOK</div></li>
                 </ul>
               </div>
-            </div>
-          </div>
+            </div> -->
+          <!-- </div>
         </div>
         <div>
           <a href="/checkout-success.html" class="button checkout-button">Complete order</a>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 
   <footer>
    
   </footer>
+  <script src="js/shoppingCart.js" type="module"></script>
 </body>
 </html>

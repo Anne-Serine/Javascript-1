@@ -55,6 +55,10 @@
   margin-bottom: 10rem;
 }
 
+.succsess-btn { 
+  display: initial;
+}
+
 .empty-cart-button {
   color: #9a0b0b;
   border: solid 1px #9a0b0b;

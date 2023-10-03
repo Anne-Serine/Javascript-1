@@ -92,7 +92,7 @@
 
 .cart-items-display {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -105,7 +105,7 @@
 .cart-price-display {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   max-width: 30rem;
   flex-wrap: wrap;

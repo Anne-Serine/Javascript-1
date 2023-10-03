@@ -2,6 +2,7 @@ import { fetchProducts } from "./api/apiCall.js";
 
 
 const cartContainer = document.querySelector("#cartContainer");
+const summaryCheckoutContainer = document.querySelector("#summaryCheckoutContainer");
 const productsUrl = "https://api.noroff.dev/api/v1/rainy-days";
 
 
@@ -107,7 +108,7 @@ if (cartContainer) {
         }
       }
 
-      cartContainer.innerHTML += `<li class="cart-display-box">
+      cartContainer.innerHTML += `<li class="cart-display-box checkout-display">
                                 <div class="cart-items-display">
                                   <a href="/products/jacket.html?productId=${productData[i].id}" class="cart-small-image">
                                     <img src="${productData[i].image}">
@@ -124,20 +125,27 @@ if (cartContainer) {
                                   <p>${quantity}</p>
                                   <p class="each-product-total"><span>${(productData[i].price * quantity).toLocaleString()} $</span></p>
                                 </div>
-                                </li>`                            
+                                </li>`   
+                                                         
     }
     
   }
   
-
-
   const totalContainer = document.querySelector(".cart-total-container");
-  
-  totalContainer.innerHTML += `<p>
-                                Total: <span>${total.toLocaleString()} $
-                              </span></p>`
+  const checkoutSummaryTotal = document.querySelector("#checkoutSummaryTotal");
 
+  // checkoutSummaryTotal.innerHTML += `<div class="disp-flex ">
+  //                                     <p>Item price: ${total.toLocaleString()} $</p>
+  //                                     <p>Shipping cost: 5 $</p>
+  //                                     </div>`
+
+  totalContainer.innerHTML += `<p>
+                                Total: <span> ${total.toLocaleString()} $
+                                </span></p>`
+                              
+  
 }
+
 
 
 
