@@ -34,6 +34,17 @@ fieldset {
   gap: 20px;
   margin-bottom: 20px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-display {
+  border-bottom: solid 1px;
+  padding: 1rem;
+}
+
+.checkout-display span {
+  font-weight: 700;
 }
 
 .summary-layout {
@@ -96,6 +107,9 @@ header .checkout-wrapper {
   grid-column: span 2;
 }
 
+.dn {
+  display: none;
+}
 
 /* contact */
 

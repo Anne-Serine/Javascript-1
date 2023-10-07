@@ -50,7 +50,7 @@
       <div class="header-icons">
         <img src="/icons/login-icon.svg" class="green-icon" alt="login icon">
         <img src="/icons/heart-icon.svg" class="heart-icon" alt="Heart icon for favorites">
-        <a href="/checkout.html"><img src="/icons/cart-icon.svg" class="green-icon" alt="cart icon"><span id="cartItemsCount"></span></a>
+        <a href="/shoppingCart.html" class="cart"><img src="/icons/cart-icon.svg" class="green-icon" alt="cart icon"><span id="cartItemCounter">0</span></a>
       </div>
     </div>
   </header>
@@ -100,8 +100,19 @@
               </div>
               <p class="detail-price" id="productPrice"></p>
             </div>
-            <!-- <button class="button" id="shopNowButton">Add to cart</button> -->
-            <a href="/checkout.html" class="button">Add to cart</a>
+            <button class="button" id="shopNowButton" data-product-id="">Add to cart</button>
+            <dialog class="dialog-added-item" id="dialog">
+              <div>
+                <div aria-label="close window" class="close-button-container"><button class="close-window-button">&times;</button></div>
+                <h2>Successfully added to cart</h2>
+                <p>Do you like to continue shopping or go to the shopping cart?</p>
+                <div class="dialog-buttons">
+                  <a href="/index.html" class="secondary continue-shopping-button" id="continueShopping">Shop more</a>
+                  <a href="/shoppingCart.html" class="button go-to-cart-button" id="goToCart">Go to cart</a>
+                </div>
+              </div>
+            </dialog>
+            <!-- <a href="/checkout.html" class="button">Add to cart</a> -->
             <div class="product-card-estimated">
               <img src="/icons/package.png" alt="package icon">
               <p>Estimated delivery 3-5 days</p>

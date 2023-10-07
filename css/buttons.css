@@ -26,14 +26,14 @@
 
 .secondary {
   font-size: 1rem;
-  display: initial;
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: #FAFAFA;
   color: #18778D;
   border-radius: 3px;
   border: solid 1px #18768D;
-  text-transform: capitalize;
+  text-transform: uppercase;
   text-decoration: none;
   padding: 10px 15px;
   text-align: center;
@@ -55,3 +55,31 @@
   margin-bottom: 10rem;
 }
 
+.succsess-btn { 
+  display: initial;
+}
+
+.empty-cart-button {
+  color: #9a0b0b;
+  border: solid 1px #9a0b0b;
+}
+
+.empty-cart-button:hover {
+  background-color: #cf1515;
+  color: rgb(251, 249, 249);
+}
+
+.close-window-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.close-window-button:hover {
+  transform: scale(1.5);
+}
+
+.close-button-container {
+  text-align: end;
+  padding: 0 0 3rem 0;
+}

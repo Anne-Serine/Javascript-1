@@ -26,6 +26,8 @@ section {
 }
 
 
+
+
 @media screen and (min-width: 650px) {
   
   .hero-text {
@@ -35,6 +37,3 @@ section {
 
 }
 
-.dn {
-  display: none;
-}

@@ -164,6 +164,7 @@
   width: 13px;
 }
 
+
 .filter .box {
   height: 13px;
   width: 13px;
@@ -333,3 +334,65 @@ aside ul {
   color: #A41C1C;
   border-radius: 3px;
 }
+
+.cart-container {
+  background-color: #ffffff;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px #ababab;
+  padding: 25px;
+  display: block;
+}
+
+.cart-container li {
+  display: flex;
+  padding: 0.5rem 0;
+}
+
+.cart-container li span {
+  font-weight: 700;
+}
+
+.cart-small-image {
+  height: 5rem;
+  width: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+.cart-small-image img {
+  max-height: 4rem;
+}
+
+/*dialog-successfully added*/
+
+.dialog-added-item {
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px #ababab;
+  flex-direction: column;
+  border: none;
+  text-align: center;
+  margin: 0 auto;
+  top: 10vh;
+}
+
+.dialog-added-item::backdrop {
+  background-color: #000000;
+  opacity: 0.6;
+}
+
+.dialog-added-item h2 {
+  color: rgb(26, 117, 26);
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+}
+

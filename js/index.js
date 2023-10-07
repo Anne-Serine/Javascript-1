@@ -1,7 +1,11 @@
 import { productCard } from "./productCard.js";
 import { fetchProducts } from "./api/apiCall.js";
 import { loadingIndicator } from "./functions.js";
+import { addToCartButton } from "./shoppingCart.js";
 
+
+
+addToCartButton()
 
 
 
@@ -11,7 +15,7 @@ async function createProductCards() {
 
   const products = await fetchProducts(url, resultsContainer);
 
-  if (products) {
+  if (products && resultsContainer) {
     resultsContainer.innerHTML = "";
 
     for (let i = 0; i < products.length; i++) {
@@ -52,6 +56,7 @@ async function createDetailCard() {
       const productPrice = document.querySelector("#productPrice");
       const productThumbnail = document.querySelector("#productThumbnail");
       const loader = document.querySelector(".loading-container");
+      const button = document.querySelector("#shopNowButton")
 
       document.title = productDetails.title + " | Rainy Days";
 
@@ -61,6 +66,7 @@ async function createDetailCard() {
       productImage.setAttribute("alt", productDetails.description);
       productName.innerHTML = productDetails.title;
       productDescription.innerHTML = productDetails.description;
+      button.setAttribute("value", productDetails.id);
 
       for (let i = 0; i < productDetails.tags.length; i++) {
 
@@ -72,7 +78,7 @@ async function createDetailCard() {
         productSizes.innerHTML += "<p>" + productDetails.sizes[i] + "</p>";
       }
 
-      productPrice.innerHTML = productDetails.price + " NOK";
+      productPrice.innerHTML = productDetails.price + " $";
 
       productThumbnail.setAttribute("src", productDetails.image);
       productThumbnail.setAttribute("alt", productDetails.description);
@@ -85,6 +91,24 @@ createDetailCard();
 
 
 
+
+//c/o address input
+
+const coAddressButton = document.getElementById("coAddressButton");
+const coAddressInputFields = document.getElementById("coAddressInputFields");
+
+coAddressButton.addEventListener("click", function () {
+  coAddressInputFields.classList.toggle("dn");
+});
+
+
+
+
+
+
+
+
+//initShoppingCart();
 
 
 // async function createHtmlForDetailCard() {

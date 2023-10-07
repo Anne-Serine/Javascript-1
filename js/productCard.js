@@ -8,7 +8,7 @@ export function productCard(product) {
   <div class="product-card-details">
     <p>${product.title}</p>
     <div class="flex-container">
-      <p class="price">${product.price} NOK</p>
+      <p class="price">${product.price} $</p>
       <div class="flex-container">
         <div class="box light-grey"></div>
         <div class="box pink"></div>

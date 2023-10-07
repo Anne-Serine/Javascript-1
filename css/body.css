@@ -82,6 +82,47 @@
 }
 
 
+
+/* cart */
+
+
+.cart-display-box {
+  justify-content: space-between;
+}
+
+.cart-items-display {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cart-title-display {
+  width: 100%;
+  max-width: 30rem;
+}
+
+.cart-price-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 30rem;
+  flex-wrap: wrap;
+}
+
+.cart-total-container {
+  justify-content: end;
+  text-align: end;
+
+}
+
+.cart-total-container span {
+  font-weight: 700;
+}
+
+
+
 /* about */
 
 .about_image {
