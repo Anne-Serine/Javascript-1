@@ -89,6 +89,25 @@ async function createDetailCard() {
 
 createDetailCard();
 
+
+
+
+//c/o address input
+
+const coAddressButton = document.getElementById("coAddressButton");
+const coAddressInputFields = document.getElementById("coAddressInputFields");
+
+coAddressButton.addEventListener("click", function () {
+  coAddressInputFields.classList.toggle("dn");
+});
+
+
+
+
+
+
+
+
 //initShoppingCart();
 
 

@@ -107,6 +107,9 @@ header .checkout-wrapper {
   grid-column: span 2;
 }
 
+.dn {
+  display: none;
+}
 
 /* contact */
 
